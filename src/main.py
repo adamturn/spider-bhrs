@@ -9,7 +9,6 @@ import os
 import sys
 # local modules
 import jpm
-import pipeline
 import switch
 
 

@@ -17,7 +17,8 @@ class SeleniumSpider(object):
 
         driver = webdriver.Firefox(
             firefox_profile=fp,
-            executable_path=str(gecko_path),
+            firefox_binary="/usr/bin/firefox",
+            executable_path=gecko_path,
             options=opts
         )
 
@@ -28,3 +29,16 @@ class SeleniumSpider(object):
         wait.until(expected_conditions.element_to_be_clickable((webdriver.common.by.By.XPATH, xpath)))
 
         return None
+
+    def wait_until_invisible(self, xpath):
+        wait = webdriver.support.ui.WebDriverWait(self.driver, 10)
+        wait.until(expected_conditions.invisibility_of_element_located((webdriver.common.by.By.XPATH, xpath)))
+
+        return None
+
+    def wait_until_visible(self, xpath):
+        wait = webdriver.support.ui.WebDriverWait(self.driver, 10)
+        wait.until(expected_conditions.visibility_of_element_located((webdriver.common.by.By.XPATH, xpath)))
+
+        return None
+
